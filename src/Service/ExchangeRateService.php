@@ -12,7 +12,6 @@ use App\Entity\ExchangeRate;
 use App\Model\ExchangeRateType;
 use App\Service\Adapter\ProviderAlphaAdaptor;
 use App\Service\Adapter\ProviderBetaAdaptor;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
