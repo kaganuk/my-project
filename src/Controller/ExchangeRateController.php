@@ -9,10 +9,15 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
-class LuckyController
+class ExchangeRateController
 {
-    public function number()
+    /**
+     * @Route("/", name="Exchange_rate_list")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function list():Response
     {
         $number = mt_rand(0, 100);
 
