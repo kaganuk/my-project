@@ -6,6 +6,8 @@
  * Time: 12:04
  */
 
+use App\Helper\Util;
+
 class ProviderBetaAdaptor implements ExchangeRateProviderInterface
 {
     private const URL = 'http://www.mocky.io/v2/5a74519d2d0000430bfe0fa0';
@@ -15,13 +17,16 @@ class ProviderBetaAdaptor implements ExchangeRateProviderInterface
         // TODO: Implement saveExchangeRates() method.
     }
 
-    public function returnRequestUrl(): string
+    public function parseExchangeRates(): array
     {
-        return self::URL;
+        dump($this->getExchangeRates());die;
     }
 
-    public function parseExchangeRates($response): array
+    /**
+     * @return mixed|string
+     */
+    private function getExchangeRates()
     {
-        // TODO: Implement parseExchangeRates() method.
+        return Util::makeRequest(self::URL);
     }
 }

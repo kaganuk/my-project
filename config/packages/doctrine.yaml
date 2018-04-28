@@ -8,7 +8,7 @@ parameters:
 doctrine:
     dbal:
         driver: pdo_sqlite
-        path: '%kernel.project_dir%/sqlite.db'
+        path: '%kernel.project_dir%/db.db'
         charset: UTF8
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'

@@ -42,7 +42,8 @@ class fetchExchangeRates extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $response = $this->exchangeRateService->makeRequest();
+        $a = new \ProviderAlphaAdaptor();
+        $response = $this->exchangeRateService->updateExchangeRates($a);
         dump(json_decode($response));die;
         // outputs multiple lines to the console (adding "\n" at the end of each line)
         $output->writeln([
