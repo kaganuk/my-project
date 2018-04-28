@@ -20,7 +20,7 @@ class Util {
 
         curl_close($curl);
         if ($jsonResponse){
-            $result = json_decode($result);
+            $result = json_decode($result,true);
         }
 
         return $result;

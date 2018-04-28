@@ -9,6 +9,7 @@
 // src/Command/CreateUserCommand.php
 namespace App\Command;
 
+use App\Service\Adapter\ProviderAlphaAdaptor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -42,13 +43,10 @@ class fetchExchangeRates extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $a = new \ProviderAlphaAdaptor();
-        $response = $this->exchangeRateService->updateExchangeRates($a);
-        dump(json_decode($response));die;
-        // outputs multiple lines to the console (adding "\n" at the end of each line)
-        $output->writeln([
-            'Exchange Rates',
-            '============',
-        ]);
+        $this->exchangeRateService->updateExchangeRates(new ProviderAlphaAdaptor());
+//        $output->writeln([
+//            'Exchange Rates',
+//            '============',
+//        ]);
     }
 }

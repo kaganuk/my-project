@@ -8,33 +8,97 @@
 
 namespace App\Service;
 
-use ExchangeRateProviderInterface;
+use App\Entity\ExchangeRate;
+use App\Model\ExchangeRateType;
+use App\Service\Adapter\ProviderAlphaAdaptor;
+use App\Service\Adapter\ProviderBetaAdaptor;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 
 class ExchangeRateService
 {
-    public function updateExchangeRates(ExchangeRateProviderInterface $exchangeRateProvider)
+    /**
+     * @var EntityManagerInterface $em
+     */
+    private $em;
+
+    /**
+     * @var LoggerInterface $em
+     */
+    private $logger;
+
+    /**
+     * ExchangeRateService constructor.
+     *
+     * @param EntityManagerInterface $entityManager
+     * @param \Psr\Log\LoggerInterface             $logger
+     */
+    public function __construct(EntityManagerInterface $entityManager,LoggerInterface $logger)
     {
-        $exchangeRateProvider->parseExchangeRates();
+        $this->em       = $entityManager;
+        $this->logger   = $logger;
     }
 
-    private function getExchangeRatesFromApi($providerType): ?array
+    public function updateExchangeRates(): void
     {
-        $responseEntity = null;
-        switch ($providerType){
-            case ProviderTypes::ALPHA:
-                $providerAlpha = new ProviderAlphaAdaptor();
-                $response = $this->CallAPI($providerAlpha->returnRequestUrl(),true);
-                $responseEntity = $providerAlpha->parseExchangeRates($response);
-                break;
-            case ProviderTypes::BETA:
-                $providerBeta = new \ProviderBetaAdaptor();
-                $response = $this->CallAPI($providerBeta->returnRequestUrl(),true);
-                $responseEntity = $providerBeta->parseExchangeRates($response);
-                break;
+        $providerAlpha          = new ProviderAlphaAdaptor();
+        $providerBeta           = new ProviderBetaAdaptor();
+        try {
+            $responseAlpha          = $providerAlpha->parseExchangeRates();
+            $responseBeta           = $providerBeta->parseExchangeRates();
+            $cheaperExchangeRates   = $this->getCheaperExchangeRates($responseAlpha, $responseBeta);
+            $this->addExchangeRates($cheaperExchangeRates);
+        } catch (\Exception $exception){
+            $this->logger->error($exception->getMessage());
+        }
+    }
+
+    /**
+     * @param $firstItem
+     * @param $secondItem
+     *
+     * @return array
+     */
+    private function getCheaperExchangeRates($firstItem, $secondItem): array
+    {
+
+        $exchangeTypes = [
+            ExchangeRateType::USDTRY,
+            ExchangeRateType::EURTRY,
+            ExchangeRateType::GBPTRY
+        ];
+        $cheaperExchangeRates = [];
+
+        try{
+            foreach ($exchangeTypes as $type){
+                /** @var ExchangeRate $firstEntity */
+                /** @var ExchangeRate $secondEntity */
+                $firstEntity    = $firstItem[$type];
+                $secondEntity   = $secondItem[$type];
+                $cheaperExchangeRate = ($firstEntity->getRate() < $secondEntity->getRate()) ?
+                    $firstEntity : $secondEntity;
+                array_push($cheaperExchangeRates, $cheaperExchangeRate);
+            }
+        } catch (\Exception $exception){
+            $this->logger->error($exception->getMessage());
         }
 
-        return $responseEntity;
+        return $cheaperExchangeRates;
     }
 
-
+    /**
+     * @param $exchangeRates
+     */
+    private function addExchangeRates($exchangeRates): void
+    {
+        try{
+            foreach ($exchangeRates as $item){
+                $this->em->persist($item);
+                $this->em->flush($item);
+            }
+        } catch (\Exception $exception){
+            $this->logger->error($exception->getMessage());
+        }
+    }
 }
