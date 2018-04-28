@@ -44,9 +44,6 @@ class fetchExchangeRates extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->exchangeRateService->updateExchangeRates(new ProviderAlphaAdaptor());
-//        $output->writeln([
-//            'Exchange Rates',
-//            '============',
-//        ]);
+        $output->writeln(['Exchange rates updated.']);
     }
 }

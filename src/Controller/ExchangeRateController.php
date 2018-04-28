@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Service\ExchangeRateService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,14 +16,16 @@ class ExchangeRateController
 {
     /**
      * @Route("/", name="Exchange_rate_list")
+     * @param \App\Service\ExchangeRateService $exchangeRateService
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function list():Response
+    public function list(ExchangeRateService $exchangeRateService):Response
     {
-        $number = mt_rand(0, 100);
+        $lastExchangeRates = $exchangeRateService->getLastExchangeRates();
 
         return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
+            '<html><body>bla bla</body></html>'
         );
     }
 }

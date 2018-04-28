@@ -12,4 +12,26 @@ class ExchangeRateType {
     public const USDTRY = 1;
     public const EURTRY = 2;
     public const GBPTRY = 3;
+
+    private static $exchangeRateTypes = [
+        self::USDTRY => 'USDTRY',
+        self::EURTRY => 'EURTRY',
+        self::GBPTRY => 'GBPTRY'
+    ];
+
+    /**
+     * @return array
+     */
+    public static function getExchangeRateTypes(): array
+    {
+        return array_keys(self::$exchangeRateTypes);
+    }
+
+    public static function getTitle($type){
+        if (array_key_exists(self::$exchangeRateTypes,$type)){
+            return self::$exchangeRateTypes[$type];
+        }
+
+        return 'Unknown Type';
+    }
 }

@@ -10,8 +10,10 @@ namespace App\Service;
 
 use App\Entity\ExchangeRate;
 use App\Model\ExchangeRateType;
+use App\Repository\ExchangeRateRepository;
 use App\Service\Adapter\ProviderAlphaAdaptor;
 use App\Service\Adapter\ProviderBetaAdaptor;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -23,22 +25,32 @@ class ExchangeRateService
     private $em;
 
     /**
-     * @var LoggerInterface $em
-     */
+ * @var LoggerInterface $em
+ */
     private $logger;
+
+    /**
+     * @var ExchangeRateRepository $em
+     */
+    private $exchangeRateRepository;
 
     /**
      * ExchangeRateService constructor.
      *
-     * @param EntityManagerInterface $entityManager
-     * @param \Psr\Log\LoggerInterface             $logger
+     * @param EntityManagerInterface                 $entityManager
+     * @param \Psr\Log\LoggerInterface               $logger
+     * @param \App\Repository\ExchangeRateRepository $exchangeRateRepository
      */
-    public function __construct(EntityManagerInterface $entityManager,LoggerInterface $logger)
+    public function __construct(EntityManagerInterface $entityManager, LoggerInterface $logger, ExchangeRateRepository $exchangeRateRepository)
     {
-        $this->em       = $entityManager;
-        $this->logger   = $logger;
+        $this->em                       = $entityManager;
+        $this->exchangeRateRepository   = $exchangeRateRepository;
+        $this->logger                   = $logger;
     }
 
+    /**
+     * updates exchange rates
+     */
     public function updateExchangeRates(): void
     {
         $providerAlpha          = new ProviderAlphaAdaptor();
@@ -53,6 +65,15 @@ class ExchangeRateService
         }
     }
 
+    public function getLastExchangeRates(): array
+    {
+        $exchangeRateCount = \count(ExchangeRateType::getExchangeRateTypes());
+        $criteria = Criteria::create();
+        $criteria->orderBy(['created'=>'DESC']);
+        $criteria->setMaxResults($exchangeRateCount);
+        return $this->exchangeRateRepository->matching($criteria)->toArray();
+    }
+
     /**
      * @param $firstItem
      * @param $secondItem
@@ -62,15 +83,11 @@ class ExchangeRateService
     private function getCheaperExchangeRates($firstItem, $secondItem): array
     {
 
-        $exchangeTypes = [
-            ExchangeRateType::USDTRY,
-            ExchangeRateType::EURTRY,
-            ExchangeRateType::GBPTRY
-        ];
+        $exchangeRateTypes = ExchangeRateType::getExchangeRateTypes();
         $cheaperExchangeRates = [];
 
         try{
-            foreach ($exchangeTypes as $type){
+            foreach ($exchangeRateTypes as $type){
                 /** @var ExchangeRate $firstEntity */
                 /** @var ExchangeRate $secondEntity */
                 $firstEntity    = $firstItem[$type];
