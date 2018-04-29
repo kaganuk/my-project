@@ -27,8 +27,9 @@ class ExchangeRateType {
         return array_keys(self::$exchangeRateTypes);
     }
 
-    public static function getTitle($type){
-        if (array_key_exists(self::$exchangeRateTypes,$type)){
+    public static function getTitle($type):string
+    {
+        if (array_key_exists($type, self::$exchangeRateTypes)){
             return self::$exchangeRateTypes[$type];
         }
 

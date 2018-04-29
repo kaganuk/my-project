@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc249224-d72f-4ca8-bbf6-a7b9fc2de02a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/db.db" afterPath="$PROJECT_DIR$/db.db" />
-      <change beforePath="$PROJECT_DIR$/src/Command/fetchExchangeRates.php" afterPath="$PROJECT_DIR$/src/Command/fetchExchangeRates.php" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ExchangeRateController.php" afterPath="$PROJECT_DIR$/src/Controller/ExchangeRateController.php" />
       <change beforePath="$PROJECT_DIR$/src/Model/ExchangeRateType.php" afterPath="$PROJECT_DIR$/src/Model/ExchangeRateType.php" />
-      <change beforePath="$PROJECT_DIR$/src/Service/ExchangeRateService.php" afterPath="$PROJECT_DIR$/src/Service/ExchangeRateService.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -149,8 +146,8 @@
       <file leaf-file-name="ExchangeRateType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/ExchangeRateType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+            <state relative-caret-position="172">
+              <caret line="29" column="34" lean-forward="false" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -179,10 +176,14 @@
       <file leaf-file-name="ExchangeRateController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/ExchangeRateController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+            <state relative-caret-position="337">
+              <caret line="35" column="46" lean-forward="false" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
               <folding>
-                <element signature="e#116#152#0#PHP" expanded="true" />
+                <element signature="e#116#144#0#PHP" expanded="true" />
+                <marker date="1525006252435" expanded="true" signature="977:1117" ph="..." />
+                <marker date="1525006252435" expanded="true" signature="983:1083" ph="..." />
+                <marker date="1525006252435" expanded="true" signature="983:1110" ph="..." />
+                <marker date="1525006252435" expanded="true" signature="1016:1035" ph="..." />
               </folding>
             </state>
           </provider>
@@ -202,7 +203,7 @@
         <entry file="file://$PROJECT_DIR$/src/Command/fetchExchangeRates.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#150#195#0#PHP" expanded="true" />
               </folding>
@@ -259,8 +260,8 @@
         <option value="$PROJECT_DIR$/src/Service/Adapter/ProviderAlphaAdaptor.php" />
         <option value="$PROJECT_DIR$/src/Service/Adapter/ProviderBetaAdaptor.php" />
         <option value="$PROJECT_DIR$/src/Service/ExchangeRateService.php" />
-        <option value="$PROJECT_DIR$/src/Model/ExchangeRateType.php" />
         <option value="$PROJECT_DIR$/src/Command/fetchExchangeRates.php" />
+        <option value="$PROJECT_DIR$/src/Model/ExchangeRateType.php" />
         <option value="$PROJECT_DIR$/src/Controller/ExchangeRateController.php" />
       </list>
     </option>
@@ -391,22 +392,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524851182359</updated>
-      <workItem from="1524851183496" duration="30485000" />
+      <workItem from="1524851183496" duration="31605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30485000" />
+    <option name="totallyTimeSpent" value="31605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.4950249" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -640,7 +642,7 @@
     <entry file="file://$PROJECT_DIR$/src/Command/fetchExchangeRates.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#150#195#0#PHP" expanded="true" />
           </folding>
@@ -657,18 +659,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/ExchangeRateType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+        <state relative-caret-position="172">
+          <caret line="29" column="34" lean-forward="false" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ExchangeRateController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        <state relative-caret-position="337">
+          <caret line="35" column="46" lean-forward="false" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
           <folding>
-            <element signature="e#116#152#0#PHP" expanded="true" />
+            <element signature="e#116#144#0#PHP" expanded="true" />
+            <marker date="1525006252435" expanded="true" signature="977:1117" ph="..." />
+            <marker date="1525006252435" expanded="true" signature="983:1083" ph="..." />
+            <marker date="1525006252435" expanded="true" signature="983:1110" ph="..." />
+            <marker date="1525006252435" expanded="true" signature="1016:1035" ph="..." />
           </folding>
         </state>
       </provider>

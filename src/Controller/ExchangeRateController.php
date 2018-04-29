@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Entity\ExchangeRate;
+use App\Model\ExchangeRateType;
 use App\Service\ExchangeRateService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,10 +24,17 @@ class ExchangeRateController
      */
     public function list(ExchangeRateService $exchangeRateService):Response
     {
+        $exRatesAsText = '';
         $lastExchangeRates = $exchangeRateService->getLastExchangeRates();
-
+        /** @var ExchangeRate $item */
+        foreach ($lastExchangeRates as $item){
+            $exRatesAsText .= ExchangeRateType::getTitle($item->getType()) . ' : ' . $item->getRate() . '<br>';
+        }
         return new Response(
-            '<html><body>bla bla</body></html>'
+            '<html><body>
+                            <h2>Exchange Rates</h2>
+                            '.$exRatesAsText.'
+                    </body></html>'
         );
     }
 }
