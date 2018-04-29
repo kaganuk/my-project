@@ -25,4 +25,14 @@ class Util {
 
         return $result;
     }
+
+    public static function getImplementingClasses( $interfaceName ): array
+    {
+        return array_filter(
+            get_declared_classes(),
+            function( $className ) use ( $interfaceName ) {
+                return in_array( $interfaceName, class_implements( $className ) );
+            }
+        );
+    }
 }

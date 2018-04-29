@@ -6,6 +6,7 @@
  * Time: 12:04
  */
 namespace App\Service\Adapter;
+
 use App\Entity\ExchangeRate;
 use App\Helper\Util;
 use App\Model\ExchangeRateType;
